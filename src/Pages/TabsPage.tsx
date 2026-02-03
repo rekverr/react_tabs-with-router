@@ -1,4 +1,4 @@
-import { NavLink, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import { TabsDetails } from '../components/TabsDetails';
 
 const tabs = [
@@ -16,15 +16,13 @@ export const TabsPage = () => {
 
       <div className="tabs is-boxed">
         <ul>
-          <li data-cy="Tab" className={tabsId === 'tab-1' ? 'is-active' : ''}>
-            <NavLink to="/tabs/tab-1">Tab 1</NavLink>
-          </li>
-          <li data-cy="Tab" className={tabsId === 'tab-2' ? 'is-active' : ''}>
-            <NavLink to="/tabs/tab-2">Tab 2</NavLink>
-          </li>
-          <li data-cy="Tab" className={tabsId === 'tab-3' ? 'is-active' : ''}>
-            <NavLink to="/tabs/tab-3">Tab 3</NavLink>
-          </li>
+          {tabs.map((tab) => (
+            <li data-cy="Tab" className={tabsId === tab.id ? 'is-active' : ''}>
+              <Link to={`/tabs/${tab.id}`}>
+                {tab.title}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
 
@@ -33,7 +31,7 @@ export const TabsPage = () => {
           Please select a tab
         </div>
       ) : (
-        <TabsDetails tabs={tabs} />
+        <Outlet context={{ tabs }} />
       )}
     </>
   );

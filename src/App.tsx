@@ -14,13 +14,17 @@ export const App = () => (
         <div className="navbar-brand">
           <NavLink
             to="/"
-            className={({ isActive }) => `navbar-item ${isActive ? 'is-active' : ''}`}
+            className={({ isActive }) =>
+              `navbar-item ${isActive ? 'is-active' : ''}`
+            }
           >
             Home
           </NavLink>
           <NavLink
             to="/tabs"
-            className={({ isActive }) => `navbar-item ${isActive ? 'is-active' : ''}`}
+            className={({ isActive }) =>
+              `navbar-item ${isActive ? 'is-active' : ''}`
+            }
           >
             Tabs
           </NavLink>
